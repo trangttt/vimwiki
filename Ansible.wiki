@@ -16,28 +16,32 @@
              
     * Setting SSH keys
 2.  Playbook
-        {{{
-		#Start a playbook
-		---
-		#First play
-		- hosts: webservers
-		  remote_user: root
+    
+        {{{playbook
+                #Start a playbook
+                ---
+                #First play
+                - hosts: webservers
+                  remote_user: root
+                  
+                  tasks:
+                  - name: ensure apache is at the latest version
+                    yum: name=httpd state=latest
+                  - name: write the apache config file
+                    template: src=/srv/httpd.j2 dest=/etc/httpd.conf
 
-		  tasks:
-		  - name: ensure apache is at the latest version
-			yum: name=httpd state=latest
-		  - name: write the apache config file
-			template: src=/srv/httpd.j2 dest=/etc/httpd.conf
-
-		#Second play
-		- hosts: databases  #Hosts to provision
-		  remote_user: root #account used to provision
-
-		  tasks:
-		  - name: ensure postgresql is at the latest version
-			yum: name=postgresql state=latest
-		  - name: ensure that postgresql is started
-			service: name=postgresql state=started
+                #Second play
+                - hosts: databases  #Hosts to provision
+                  remote_user: root #account used to provision
+                  
+                  tasks:
+                  - name: ensure postgresql is at the latest version
+                    yum: name=postgresql state=latest
+                  - name: ensure that postgresql is started
+                    service: name=postgresql state=started
         }}}    
-        
-3. 
+
+             
+3. Handlers
+    
+     
