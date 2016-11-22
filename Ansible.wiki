@@ -1,14 +1,17 @@
 = ANSIBLE =
 1.  Initializing inventory
     * inventory file
-    {{{
-        192.168.1.20
-        
-        [database]
-        192.168.1.21
-        192.168.1.22
-        
-        [network]
-        192.168.1.22
-      }}} 
     
+        {{{inventory
+                192.168.1.20
+                
+                [database]
+                192.168.1.21
+                192.168.1.22
+                
+                [network]
+                192.168.1.22
+        }}} 
+ 
+    * Setting SSH keys
+            
