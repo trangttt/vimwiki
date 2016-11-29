@@ -30,10 +30,25 @@
         . <FILE1> -nt <FILE2> newer than
         . <FILE1> -ot <FILE2> older than
         . <FILE1> -ef <FILE2> refer to the same device and inode number
-        
+== Parameters expansion ==        
+	- Simple usage
+		$PARAMETER
+		${PARAMETER}
+	- Indirection
+	- Case modification
+	- Variable name expansion
+	- Substring removal (also for filename manipulation!)
+	- Search and replace
+	- String length
+	- Substring expansion
+	- Use a default value
+	- Assign a default value
+	- Use an alternate value
+	- Display error if null or unset
+	 
 ==  Color ==
     * Escape sequence \e[  \x1B
-    * Color
+    * 
 == Sticky bit ==
     drwxrwxrw[t] file mode, letter 't' at the end.
     chmod o+t <file>
