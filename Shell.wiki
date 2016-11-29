@@ -33,6 +33,7 @@
         
 ==  Color ==
     * Escape sequence \e[  \x1B
+    * Color
 == Sticky bit ==
     drwxrwxrw[t] file mode, letter 't' at the end.
     chmod o+t <file>
