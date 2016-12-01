@@ -32,63 +32,60 @@
         . <FILE1> -ef <FILE2> refer to the same device and inode number
 == Parameters expansion ==        
 	- Simple usage
-        {{{ 
-            $PARAM
-            ${PARAM}
-       }}}	
+        `$PARAM`    
+        `${PARAM}`
     - Indirection
-        {{{
-           ${!PARAM} 
-        }}}
+        `${!PARAM}` 
 	- Case modification
-        {{{
+        ```
            ${PARAM^}
            ${PARAM,}
            ${PARAM^^}
            ${PARAM,,}
            ${PARAM~}
            ${PARAM~~}
-        }}}
+        ```
+        
 	- Variable name expansion
-        {{{
+        ```
            ${!PREFIX@}
            ${!PREFIX*}
-        }}}
+        ```
 	- Substring removal (also for filename manipulation!)
-        {{{
+        ```
             ${PARAM#PATTERN}
             ${PARAM##PATTERN}
             ${PARAM%PATTERN}
             ${PARAM%%PATTERN}
-        }}}
+        ```
 	- Search and replace
-        {{{
+        ```
             
-        }}}
+        ```
 	- String length
-        {{{
+        ```
             
-        }}}
+        ```
 	- Substring expansion
-        {{{
+        ```
             
-        }}}
+        ```
 	- Use a default value
-        {{{
+        ```
             
-        }}}
+        ```
 	- Assign a default value
-        {{{
+        ```
             
-        }}}
+        ```
 	- Use an alternate value
-        {{{
+        ```
             
-        }}}
+        ```
 	- Display error if null or unset
-        {{{
+        ```
             
-        }}}
+        ```
 	 
 ==  Color ==
     * Escape sequence \e[  \x1B
