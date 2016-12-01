@@ -34,8 +34,8 @@
 	- Simple usage
         
         ```bash
-            $PARAM    
-            ${PARAM}
+$PARAM    
+${PARAM}
         ```
         
 	- Indirection 
@@ -43,12 +43,12 @@
         `${!PARAM}` 
 	- Case modification
         ```bash
-           ${PARAM^}
-           ${PARAM,}
-           ${PARAM^^}
-           ${PARAM,,}
-           ${PARAM~}
-           ${PARAM~~}
+${PARAM^}
+${PARAM,}
+${PARAM^^}
+${PARAM,,}
+${PARAM~}
+${PARAM~~}
         ```
         
 	- Variable name expansion
