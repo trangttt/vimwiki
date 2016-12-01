@@ -32,6 +32,9 @@
         . <FILE1> -ef <FILE2> refer to the same device and inode number
 == Parameters expansion ==        
 	- Simple usage
+    ```python
+print 'bar'    
+    ```
         
         ```bash
 $PARAM    
