@@ -31,20 +31,21 @@
         . <FILE1> -ot <FILE2> older than
         . <FILE1> -ef <FILE2> refer to the same device and inode number
 == Parameters expansion ==        
-	- Simple usage
-    ```python
+    - Simple usage
+        ```python
 print 'bar'    
-    ```
+        ```
         
         ```bash
 $PARAM    
 ${PARAM}
         ```
         
-	- Indirection 
+    - Indirection 
         
         `${!PARAM}` 
-	- Case modification
+        
+    - Case modification
         ```bash
 ${PARAM^}
 ${PARAM,}
