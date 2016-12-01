@@ -32,12 +32,17 @@
         . <FILE1> -ef <FILE2> refer to the same device and inode number
 == Parameters expansion ==        
 	- Simple usage
-        `$PARAM`    
-        `${PARAM}`
-    - Indirection
+        
+        ```bash
+            $PARAM    
+            ${PARAM}
+        ```
+        
+	- Indirection 
+        
         `${!PARAM}` 
 	- Case modification
-        ```
+        ```bash
            ${PARAM^}
            ${PARAM,}
            ${PARAM^^}
