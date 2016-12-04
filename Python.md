@@ -1,6 +1,6 @@
-= Virtual Environments =
+# Virtual Environments 
 
-== virtualenv ==
+## virtualenv 
 virtualenv : python package to create an isolated Python environments. To isolate dependencies and python version. 
 
 ```
@@ -9,7 +9,7 @@ source <env name>/bin/activate
 deactivate
 ```
 
-== pyenv ==
+## pyenv 
 pyenv: to manage multiple python installments. 
 `pyenv install <version>`: install a version of python.
 `pyenv uninstall <version>:` uninstall a version of python.
@@ -22,7 +22,7 @@ pyenv: to manage multiple python installments.
 `pyenv which <command>`: show the fullpath of the executable that pyenv will invoke if you execute a command.
 
 
-= pyenv-virtualenv =
+## pyenv-virtualenv
 pyenv : used to manage virtual envs.
 `pyenv virtualenv <version> <env name>`: create a virtual env <env name> from python version <version>. if <version> is not given, current python version is used.
 `pyenv virtualenvs`: list all virtual envs.
