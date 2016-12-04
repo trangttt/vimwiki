@@ -1,10 +1,10 @@
 # NOTES 
     1. Testing
-```python
+    ```python
 print("A")
 for i in "cdg":
     print(i)
-```
+    ```
     2. Testing
         - Test
         - Test
