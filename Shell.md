@@ -3,7 +3,7 @@
 ## Comparisions
 Comparisions in bash
 
-1. Arithmetic tests
+1. Arithmetic tests:
    `-eq` `-ne` `-lt` `-gt` `-le` `-ge`
        
 2. String tests
@@ -52,40 +52,55 @@ Comparisions in bash
    - `${PARAM~~}`
     
 - Variable name expansion
-`${!PREFIX@}`
-`${!PREFIX*}`
+   - `${!PREFIX@}`
+   - `${!PREFIX*}`
     
 - Substring removal (also for filename manipulation!)
-`${PARAM#PATTERN}`
-`${PARAM##PATTERN}`
-`${PARAM%PATTERN}`
-`${PARAM%%PATTERN}`
-   
+   - `${PARAM#PATTERN}`
+   - `${PARAM##PATTERN}`
+   - `${PARAM%PATTERN}`
+   - `${PARAM%%PATTERN}`
+      
 - Search and replace
-`${PARAM/PATTERN/REPLACE}`
-`${PARAM//PATTERN/REPLACE}`
-`${PARAM/PATTERN}`
-`${PARAM//PATTERN}`
-`${PARAM/#PATTERN/REPLACE}`
-`${PARAM/%PATTERN/REPLACE}`
-
+   - `${PARAM/PATTERN/REPLACE}`
+   - `${PARAM//PATTERN/REPLACE}`
+   - `${PARAM/PATTERN}`
+   - `${PARAM//PATTERN}`
+   - `${PARAM/#PATTERN/REPLACE}`
+   - `${PARAM/%PATTERN/REPLACE}`
+   
 - String length
-`${#PARAM}`
-
+   - `${#PARAM}`
+   
 - Substring expansion
-`${PARAM:OFFSET}`
-`${PARAM:OFFSET:LENGTH}`
-
+   - `${PARAM:OFFSET}`
+   - `${PARAM:OFFSET:LENGTH}`
+   - Negative offset
+   - Negative length
+   - Array
+   - 
 - Use a default value
+   - `${PARAM:-DEFAULT}`
+   - `${PARAM-DEFAULT}`
+   - Array
 - Assign a default value
+   - `${PARAM:=DEFAULT}`
+   - `${PARAM=DEFAULT}`
 - Use an alternate value
+   - `${PARAM:+REPLACE}`
+   - `${PARAM+REPLACE}`
 - Display error if null or unset
+   - `${PARAM:?ERROR}`
+   - `${PARAM?ERROR}`
 	 
 ##  Color 
+
 * Escape sequence \e[  \x1B
-* 
+ 
+ 
 ## Sticky bit 
-drwxrwxrw[t] file mode, letter 't' at the end.
+
+rwxrwxrw[t] file mode, letter 't' at the end.
 chmod o+t <file>
 chmod 1755 <file>
 Ensure only the owner of the files are allowed to delete such files.
