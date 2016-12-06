@@ -4,21 +4,16 @@
 Comparisions in bash
 
 1. Arithmetic tests
-   - `-eq`
-   - `-ne`
-   - `-lt`
-   - `-gt`
-   - `-le`
-   - `-ge`
+   `-eq` `-ne` `-lt` `-gt` `-le` `-ge`
        
 2. String tests
-   - `-z`
-   - `-n`
-   - `=`
-   - `==`
-   - `!=`
-   - `<` 
-   - `>` 
+   - `-z` is String zero
+   - `-n` is String null
+   - `=` equals
+   - `==` equals
+   - `!=` not equals
+   - `<`  lexicographically less than
+   - `>`  lexicographically larger than
        
 3. File checking
    - `-e` exits
@@ -27,8 +22,8 @@ Comparisions in bash
    - `-d` directory
    - `-L` symbolic link
    - `-h` symbolic link
-   - `-g` sgid set # Allow file has the group permission when executed. chmod 2755 <file>
-   - `-u` suid set # Allow file has the user permission when executed. chmod 4755 <file>
+   - `-g` sgid set # Allow file has the group permission when executed. chmod 2xxx <file>
+   - `-u` suid set # Allow file has the user permission when executed. chmod 4xxx <file>
    - `-r` readable
    - `-x` executable
    - `-w` writable
@@ -46,16 +41,15 @@ Comparisions in bash
  
 - Indirection 
 
-`${!PARAM}` 
+`${!PARAM}` : value reference by the variable referenced by PARAM
     
 - Case modification
-
-`${PARAM^}`
-`${PARAM,}`
-`${PARAM^^}`
-`${PARAM,,}`
-`${PARAM~}`
-`${PARAM~~}`
+   - `${PARAM^}`
+   - `${PARAM,}`
+   - `${PARAM^^}`
+   - `${PARAM,,}`
+   - `${PARAM~}`
+   - `${PARAM~~}`
     
 - Variable name expansion
 `${!PREFIX@}`
@@ -68,8 +62,20 @@ Comparisions in bash
 `${PARAM%%PATTERN}`
    
 - Search and replace
+`${PARAM/PATTERN/REPLACE}`
+`${PARAM//PATTERN/REPLACE}`
+`${PARAM/PATTERN}`
+`${PARAM//PATTERN}`
+`${PARAM/#PATTERN/REPLACE}`
+`${PARAM/%PATTERN/REPLACE}`
+
 - String length
+`${#PARAM}`
+
 - Substring expansion
+`${PARAM:OFFSET}`
+`${PARAM:OFFSET:LENGTH}`
+
 - Use a default value
 - Assign a default value
 - Use an alternate value
