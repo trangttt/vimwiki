@@ -3,7 +3,7 @@
 ## Comparisions
 Comparisions in bash
 
-* Arithmetic tests
+1. Arithmetic tests
     
 - `-eq`
 - `-ne`
@@ -12,7 +12,7 @@ Comparisions in bash
 - `-le`
 - `-ge`
        
-* String tests
+2. String tests
    
 . `-z`
 . `-n`
@@ -22,7 +22,7 @@ Comparisions in bash
 . `<` 
 . `>` 
        
-* File checking
+3. File checking
    
 . `-e` exits
 . `-f` normal file
