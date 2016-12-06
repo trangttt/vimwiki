@@ -6,10 +6,15 @@ Comparisions in bash
 * Arithmetic tests
     
 . `-eq`
+
 . `-ne`
+
 . `-lt`
+
 . `-gt`
+
 . `-le`
+
 . `-ge`
        
 * String tests
