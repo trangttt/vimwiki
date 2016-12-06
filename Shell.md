@@ -36,12 +36,12 @@ Comparisions in bash
 
 - Simple usage
 
-`$PARAM`
-`${PARAM}`
+   - `$PARAM`
+   - `${PARAM}`
  
 - Indirection 
 
-`${!PARAM}` : value reference by the variable referenced by PARAM
+   - `${!PARAM}` : value reference by the variable referenced by PARAM
     
 - Case modification
    - `${PARAM^}`
