@@ -2,6 +2,7 @@
 
 ## Comparisions
 Comparisions in bash
+
     * Arithmetic tests
     
         . `-eq`
