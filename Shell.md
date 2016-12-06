@@ -100,7 +100,7 @@ Comparisions in bash
  
 ## Sticky bit 
 
-rwxrwxrw[t] file mode, letter 't' at the end.
+[rwxrwxrw](rwxrwxrw)[t] file mode, letter 't' at the end.
 chmod o+t <file>
 chmod 1755 <file>
 Ensure only the owner of the files are allowed to delete such files.
