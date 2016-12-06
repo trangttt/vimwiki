@@ -1,13 +1,16 @@
 ## Comparisions
 
     * Arithmetic tests
+    
         . `-eq`
         . `-ne`
         . `-lt`
         . `-gt`
         . `-le`
         . `-ge`
+        
     * String tests
+    
         . `-z`
         . `-n`
         . `=`
@@ -15,7 +18,9 @@
         . `!=`
         . `<` 
         . `>` 
+        
     * File checking
+    
         . `-e` exits
         . `-f` normal file
         . `-S` Socket
@@ -35,13 +40,16 @@
 ## Parameters expansion         
 
     - Simple usage
+    
         `$PARAM`
         `${PARAM}`
     - 
     - Indirection 
+    
         `${!PARAM}` 
         
     - Case modification
+    
         `${PARAM^}`
         `${PARAM,}`
         `${PARAM^^}`
