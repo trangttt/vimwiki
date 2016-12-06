@@ -1,7 +1,7 @@
 #SHELL
 
 ## Comparisions
-
+Comparisions in bash
     * Arithmetic tests
     
         . `-eq`
@@ -45,7 +45,7 @@
     
         `$PARAM`
         `${PARAM}`
-    - 
+     
     - Indirection 
     
         `${!PARAM}` 
