@@ -1,3 +1,5 @@
+#SHELL
+
 ## Comparisions
 
     * Arithmetic tests
