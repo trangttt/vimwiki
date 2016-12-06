@@ -4,7 +4,6 @@
 Comparisions in bash
 
 1. Arithmetic tests
-    
 - `-eq`
 - `-ne`
 - `-lt`
@@ -13,7 +12,6 @@ Comparisions in bash
 - `-ge`
        
 2. String tests
-   
 . `-z`
 . `-n`
 . `=`
@@ -23,7 +21,6 @@ Comparisions in bash
 . `>` 
        
 3. File checking
-   
 . `-e` exits
 . `-f` normal file
 . `-S` Socket
