@@ -4,38 +4,38 @@
 Comparisions in bash
 
 1. Arithmetic tests
-- `-eq`
-- `-ne`
-- `-lt`
-- `-gt`
-- `-le`
-- `-ge`
+   - `-eq`
+   - `-ne`
+   - `-lt`
+   - `-gt`
+   - `-le`
+   - `-ge`
        
 2. String tests
-. `-z`
-. `-n`
-. `=`
-. `==`
-. `!=`
-. `<` 
-. `>` 
+   . `-z`
+   . `-n`
+   . `=`
+   . `==`
+   . `!=`
+   . `<` 
+   . `>` 
        
 3. File checking
-. `-e` exits
-. `-f` normal file
-. `-S` Socket
-. `-d` directory
-. `-L` symbolic link
-. `-h` symbolic link
-. `-g` sgid set # Allow file has the group permission when executed. chmod 2755 <file>
-. `-u` suid set # Allow file has the user permission when executed. chmod 4755 <file>
-. `-r` readable
-. `-x` executable
-. `-w` writable
-. `-s` size bigger than 0 ( not empty file )
-. `<FILE1> -nt <FILE2>` newer than
-. `<FILE1> -ot <FILE2>` older than
-. `<FILE1> -ef <FILE2>` refer to the same device and inode number
+   . `-e` exits
+   . `-f` normal file
+   . `-S` Socket
+   . `-d` directory
+   . `-L` symbolic link
+   . `-h` symbolic link
+   . `-g` sgid set # Allow file has the group permission when executed. chmod 2755 <file>
+   . `-u` suid set # Allow file has the user permission when executed. chmod 4755 <file>
+   . `-r` readable
+   . `-x` executable
+   . `-w` writable
+   . `-s` size bigger than 0 ( not empty file )
+   . `<FILE1> -nt <FILE2>` newer than
+   . `<FILE1> -ot <FILE2>` older than
+   . `<FILE1> -ef <FILE2>` refer to the same device and inode number
         
 ## Parameters expansion         
 
