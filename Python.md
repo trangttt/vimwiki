@@ -23,7 +23,7 @@ virtualenv : python package to create an isolated Python environments. To isolat
 
 
 ## pyenv-virtualenv
-- pyenv : used to manage virtual envs.
+- pyenv : used to manage virtual envs. wiki_1, wiki_2 ]
 - `pyenv virtualenv <version> <env name>`: create a virtual env <env name> from python version <version>. if <version> is not given, current python version is used.
 - `pyenv virtualenvs`: list all virtual envs.
 - `pyenv local <env name>`: set virtual env for current directory.

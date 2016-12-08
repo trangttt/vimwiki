@@ -127,3 +127,6 @@ Ensure only the owner of the files are allowed to delete such files.
 
 ## sed
 `sed '1!G;h;$!d' <file>` : reverse a file
+
+
+## awk
