@@ -106,3 +106,28 @@ class MyRecursiveTask extends RecursiveTask<T>{
 - `invoke`
  
 ## Stream, Lambda
+
+### Lambda expression
+Lambda expression is a *Functional Interface*, anotated as `@FuntionalInterface`, a single abstract method type.
+Notes: JDK8 introduces default method and static method for interface. Default method for interface allows multiple inheritance of behaviour.
+
+- `() -> System.out.println("Hello World")`
+- `x -> x + 10`
+- `(int x, int y) ->  x + y;` 
+
+### Function packages
+### Method references
+Format : `target_reference::method_name`. Three kinds of method references:
+- `Class::staticMethod`. Ex: `str -> System.out.println(str)` ->  `System.out::println`
+- `Class::instanceMethod`. Ex: `(arg0, rest) -> arg0.instanceMethod(rest)` -> `ClassName::instanceMethod`
+- `Instance:instanceMethod`. Ex: `a -> getLength(a)` -> `this::getLength`
+- `Constructor`  Ex: `Factory<List<String>> fac = () -> ArrayList<String>()` -> `Factory<List<String>> fac = ArrayList<String>::new`
+
+### Closure
+Lambda expression can refer to *effectively final* variable from the surrounding scope.
+
+Closure on value not on variable.
+# NESTED CLASS
+## Static nested class
+## Inner Class
+## Shadowing
