@@ -30,3 +30,125 @@ virtualenv : python package to create an isolated Python environments. To isolat
 - `pyenv local --unset`: unset local python virtual env.
 - `pyenv activate <env name>`: activate <env name> for current shell.
 
+# Useful libraries
+## argparse
+`parser = ArgumentParser(description="xxx", epilog="xxxx")`
+
+```python
+parser.add_argument("-x",
+                    action=[(store)/store_true/store_false/append/],
+                    required=[True/(False)],
+                    nargs=[ int (0) ],
+                    type=[ function to convert string to suitable type ],
+                    choices=[ list of selectable values ],
+                    default=[ default value ],
+                    help="string to print with --h")
+```
+Options that conflicts:
+```python
+group = parser.add_mutually_exclusive_group()
+group.add_argument(....)
+```
+
+## defaults
+1. `eval`
+2. `any`
+3. `all`
+4. `filter` 
+5. `map`
+6. `enumerate`
+7. `zip`
+
+## collections
+1. `ChainMap`
+    ```python
+    total_dict = ChainMap(dict1, dict2, dict3, dict4)
+    ```
+3. `defaultdict`
+4. `dequeue`
+5. `namedtuple`
+6. `OrderedDict`
+7. `Counter`
+
+## itertools
+1. `count`
+2. `cycle`
+3. `repeat`
+4. `chain`
+5. `accumulate`
+6. `dropwhile`
+7. `takewhile`
+8. `compress`
+9. `startmap`
+10. `filterfalse`
+11. `tee`
+12. `groupby`
+
+## functools
+1. wraps
+2. partial
+
+
+# Idioms
+
+1. Context Manager
+```python
+class MyTimer:
+    def __init__(self):
+        pass
+    
+    def __enter__(self):
+        return <something: self/ filedescriptor/...>
+    
+    def __exit__(self, exc_type, exc_val, exc_tb):
+       pass 
+```
+
+```python
+from contextlib import contextmanager
+
+@contextmanager
+def func():
+    do_something()
+    yield something 
+    do_something()
+```
+
+2. 
+3. 
+
+
+# Profiling
+## cProfile
+used to profile functions and overall programs.
+```python
+python -m cProfile <file>
+```
+
+## line_profiler
+used to profile line by line of the profiled functions.
+Adding `@profile` to function to be profiled.
+`kernprof -l <file> <Args>` : resulting a binary-encoded result file .lprof
+`python -m line_profile <result_file>`: decode the result file
+`kernprof -l -v <file> <args>`: profiling and printing out the result.
+
+## memory_profiler
+Adding `@profile` to the to-be-profiled functions.
+`python -m memory_profile <file>`: memory_profiling the python file
+`mprof <file>`: logging memory usage every .1 seconds, no need `@profile`, remember to remove after memory_profile in previous steps.
+`mprof plot`: using matplotlib to create graph
+
+## profilehooks
+`@profile` : profiling function-wise
+`@timecall`: timeit
+`@coverage`: collect code coverage
+
+
+# Testing
+## doctest
+## unittest
+## Mock module
+## pytest
+
+# Generator
+# Metaclass
