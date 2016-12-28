@@ -5,7 +5,7 @@ Comparisions in bash
 
 1. Arithmetic tests:
    `-eq` `-ne` `-lt` `-gt` `-le` `-ge`
-       
+
 2. String tests
    - `-z` is String zero
    - `-n` is String null
@@ -14,7 +14,7 @@ Comparisions in bash
    - `!=` not equals
    - `<`  lexicographically less than
    - `>`  lexicographically larger than
-       
+
 3. File checking
    - `-e` exits
    - `-f` normal file
@@ -31,7 +31,8 @@ Comparisions in bash
    - `<FILE1> -nt <FILE2>` newer than
    - `<FILE1> -ot <FILE2>` older than
    - `<FILE1> -ef <FILE2>` refer to the same device and inode number
-        
+
+
 ## Parameters expansion         
 
 - Simple usage
@@ -42,7 +43,7 @@ Comparisions in bash
 - Indirection 
 
    - `${!PARAM}` : value reference by the variable referenced by PARAM
-    
+
 - Case modification
    - `${PARAM^}`
    - `${PARAM,}`
@@ -50,17 +51,17 @@ Comparisions in bash
    - `${PARAM,,}`
    - `${PARAM~}`
    - `${PARAM~~}`
-    
+
 - Variable name expansion
    - `${!PREFIX@}`
    - `${!PREFIX*}`
-    
+
 - Substring removal (also for filename manipulation!)
    - `${PARAM#PATTERN}`
    - `${PARAM##PATTERN}`
    - `${PARAM%PATTERN}`
    - `${PARAM%%PATTERN}`
-      
+
 - Search and replace
    - `${PARAM/PATTERN/REPLACE}`
    - `${PARAM//PATTERN/REPLACE}`
@@ -68,10 +69,10 @@ Comparisions in bash
    - `${PARAM//PATTERN}`
    - `${PARAM/#PATTERN/REPLACE}`
    - `${PARAM/%PATTERN/REPLACE}`
-   
+
 - String length
    - `${#PARAM}`
-   
+
 - Substring expansion
    - `${PARAM:OFFSET}`
    - `${PARAM:OFFSET:LENGTH}`
@@ -92,7 +93,11 @@ Comparisions in bash
 - Display error if null or unset
    - `${PARAM:?ERROR}`
    - `${PARAM?ERROR}`
-	 
+
+## Arithmetic 
+$[ ]
+$(( ))
+
 ##  Color 
 
 * Escape sequence \e[  \x1B
@@ -130,3 +135,10 @@ Ensure only the owner of the files are allowed to delete such files.
 
 
 ## awk
+## Good to remember commands
+1. `nl`: line numbering
+    `nl -w1 -s". "`: line numbering with width=1, suffix=". "
+2. 
+3. 
+4. 
+
