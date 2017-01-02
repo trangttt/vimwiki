@@ -2,8 +2,6 @@
 
 ## virtualenv 
 virtualenv : python package to create an isolated Python environments. To isolate dependencies and python version. 
-
-
 - `virtualenv -p <path to python executable> <env name>`: create a new virtual env with python executable path.
 - `source <env name>/bin/activate`: activate virtual env.
 - `deactivate`: deactivate a virtual env.
@@ -23,7 +21,7 @@ virtualenv : python package to create an isolated Python environments. To isolat
 
 
 ## pyenv-virtualenv
-- pyenv : used to manage virtual envs. wiki_1, wiki_2 ]
+pyenv : used to manage virtual envs. 
 - `pyenv virtualenv <version> <env name>`: create a virtual env <env name> from python version <version>. if <version> is not given, current python version is used.
 - `pyenv virtualenvs`: list all virtual envs.
 - `pyenv local <env name>`: set virtual env for current directory.
@@ -72,21 +70,46 @@ group.add_argument(....)
 
 ## itertools
 1. `count`
-2. `cycle`
+```python
+count(start[, step])
+count(10, 2) -> 10, 12, 14, 16,...
+```
+2. `cycle` 
+```python
+cycle(iterable)
+cycle('abcd') -> a, b, c, d, a, b, c, d, ...
+```
 3. `repeat`
+```python
+repeat(elem[, times])
+repeat(3, 2) -> 3, 3
+``` 
 4. `chain`
-5. `accumulate`
-6. `dropwhile`
-7. `takewhile`
-8. `compress`
-9. `startmap`
-10. `filterfalse`
-11. `tee`
-12. `groupby`
+```python
+chain(iter1, iter2, ...)
+chain('ABC', 'DEF') -> A, B, C, D, E, F
+
+```
+5. `chain.from_iterable` 
+```python
+chain.from_iterable([iter1, iter2,...])
+chain.from_iterable(['ABC', 'DEF'])
+``` 
+6. `accumulate`
+8. `dropwhile`
+9. `takewhile`
+10. `compress`
+11. `starmap`
+12. `filterfalse`
+13. `tee`
+14. `groupby`
+15. `islice`
 
 ## functools
-1. wraps
-2. partial
+1. `wraps`
+2. `partial`
+3. `lru_cache`
+4. 
 
 
 # Idioms
@@ -96,12 +119,15 @@ group.add_argument(....)
 class MyTimer:
     def __init__(self):
         pass
-    
+
     def __enter__(self):
         return <something: self/ filedescriptor/...>
-    
+
     def __exit__(self, exc_type, exc_val, exc_tb):
-       pass 
+       pass
+
+with MyTimer() as timer:
+    do_something()
 ```
 
 ```python
@@ -110,7 +136,7 @@ from contextlib import contextmanager
 @contextmanager
 def func():
     do_something()
-    yield something 
+    yield something
     do_something()
 ```
 
@@ -149,6 +175,54 @@ Adding `@profile` to the to-be-profiled functions.
 ## unittest
 ## Mock module
 ## pytest
+1. Simple test:
+```python
+    def test_xxx():
+        assert()
+```
+Running:
+```python
+    python -m pytest <file>
+    py.test <file>
+    pytest <module>.<file>
+    pytest -s <file> #--capture=no print output
+    pytest -v <file>
+    pytest -q <file>
+```
 
+Running with verbose
+```python
+    python -m pytest -v <file> 
+    py.test -v <file>
+    pytest <module>.<file>
+    pytest -s <file> #--capture=no print output
+    pytest -v <file>
+    pytest -q <file>
+```
+
+2. Pytest fixtures:
+Different setup/teardown level :
+- At the beginning and the end of a module( `setup_module`,`teardown_module` )
+- At the beginning and the end of a class( `setup_class`,`teardown_class` )
+- At the beginning and the end of a function( `setup_function`,`teardown_function` )
+- At the beginning and the end of a method( `setup_method`,`teardown_method` )
+- alternate style of class level fixtures
+- Hooks for session `pytest_sessionstart(session)`, `pytest_sessionfinish(session, exitstatus)`
+3. Test discovery
+- Name my test modules/files starting with ‘test_’.
+- Name my test functions starting with ‘test_’.
+- Name my test classes starting with ‘Test’.
+- Name my test methods starting with ‘test_’.
+- Make sure all packages with test code have an ‘__init__.py’ file.
+
+4. Assert statement
+- `assert 0`: gives error
+- `assert 1`: pass
+- `assert <statement>`: covers all possibilities.
+5. Fixtures
+- `import pytest`
+- `@pytest.fixture`: annotate function
+6. 
 # Generator
+
 # Metaclass
