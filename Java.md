@@ -102,6 +102,7 @@ Notes: JDK8 introduces default method and static method for interface. Default m
 - `() -> System.out.println("Hello World")`
 - `x -> x + 10`
 - `(int x, int y) ->  x + y;` 
+- Define using lambda `BiFuntion`, `Predicate`. method to use lambda in definition `apply`
 
 ### Function packages
 ### Method references
@@ -183,7 +184,7 @@ class DataProcessor {
       - `Collectors.joining()`, `Collector.joining(CharSequence delimeter)`, `Collector.joining(CharSequence delimeter, CharSequence prefix, CharSequence suffix)`
       - `Collectors.reducing(BinaryOperator o)`
       - `Collectors.reducing(U identity, Function mapper, BinaryOperator o)`
-      - `Collectors.maxBy(Comparator c)`, `Collector.minBy(Comparator c)`
+      - `Collector.averagingInt(ToIntFunction)`, `Collectors.summarizingInt(ToIntFunction)`, `Collectors.summingInt(ToIntFunction)`, `Collectors.maxBy(Comparator c)`, `Collector.minBy(Comparator c)`
       - `Collectors.toList()`, `Collector.toSet()`
       - `Collectors.toMap(Function keyMapper, Function valueMapper)`
       - `Collectors.toMap(Funciton keyMapper, Function valueMapper, BinaryOperator mergeFunction, Supplier mapSupplier)`: mergeFunction used to resolve collisions between values associated with the same key.
@@ -192,6 +193,7 @@ class DataProcessor {
       - `Collectors.groupingBy(Function<T, K> classifier, Collector c)`: like above and then apply Collector c to each set of key K.
       - `Collectors.groupingBy(Function<T, K> classifier, Supplier<M> mapFactory, Collector c)`: supple the type of returned Map using mapFactory.
       - `Collectors.mapping(Function mapper, Collector c)`
+      - `Collectors.partitioningBy(Predicatep )`
   - `toArray`
 - Numerical results:
   - `count()`
@@ -208,9 +210,24 @@ class DataProcessor {
 Optional<T> t
 t.filter(), t.map()
 t.flatMap()
-Optional.ofNullable()
+Optional.ofNullable() //initialize
 t.ifPresent()
 t.orElse()
+```
+### Reducing operator
+- Finding a single result, thinking about using `reducing`
+- Ex: Finding the length of the longest line of a file
+```java
+Path file = Path.get("file");
+String longestLine = Files.lines(file)
+                    .reduce( (x,y) -> {
+                    if ( x.length() > y.length() )
+                        return x;
+                    return y;
+                        } ).get();
+
+//Simple
+int len = Files.lines(file).max(Comparator.comparingInt(String::length));
 ```
 -
 # NESTED CLASS
