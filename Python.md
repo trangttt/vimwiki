@@ -140,8 +140,16 @@ def func():
     do_something()
 ```
 
-2. 
-3. 
+2. "and"
+```python
+"a" and "b" = "b"
+```
+3. string * number
+```python
+"a" * 0 = None
+"a" * 1 = "a" 
+```
+4. 
 
 
 # Profiling
@@ -188,6 +196,8 @@ Running:
     pytest -s <file> #--capture=no print output
     pytest -v <file>
     pytest -q <file>
+    pytest --collect-only <file> #only prints out testcase
+    pytest -k <testcase> <file> #select testcase
 ```
 
 Running with verbose
@@ -200,12 +210,13 @@ Running with verbose
     pytest -q <file>
 ```
 
-2. Pytest fixtures:
+2. Pytest setup/teardown:
 Different setup/teardown level :
 - At the beginning and the end of a module( `setup_module`,`teardown_module` )
 - At the beginning and the end of a class( `setup_class`,`teardown_class` )
 - At the beginning and the end of a function( `setup_function`,`teardown_function` )
 - At the beginning and the end of a method( `setup_method`,`teardown_method` )
+- Session: defined at conftest.py `pytest_sessionstart(session)`
 - alternate style of class level fixtures
 - Hooks for session `pytest_sessionstart(session)`, `pytest_sessionfinish(session, exitstatus)`
 3. Test discovery
@@ -222,7 +233,65 @@ Different setup/teardown level :
 5. Fixtures
 - `import pytest`
 - `@pytest.fixture`: annotate function
-6. 
+- `scope=[session|module|class]`
+- `request` : test context
+- `@pytest.fixture(params=[....])`
+```python
+@pytest.fixture(params=[...])
+def fixture(request):
+    resquest.param
+    pass
+
+def test_func(fixture)
+```
+- `params`, `ids`: using `ids` to denote id of testcase for select running later
+- Using fixtures from class, modules or projects:
+  - `@pytest.mark.usefixtures(fixture1, fixture2,...)`
+  - Using fixture for whole Project using pytest.ini 
+```python
+[pytest]
+usefixtures = fixture1, fixture2,...
+```
+- `autouse`: use with care
+ 
+6. "monkeypatch" fixture, for mocking modules
+```python
+def test_f(monkeypatch):
+    monkeypatch.setattr(module, "method/variable", value)
+```
+```java
+Class MonkeyPatching
+setattr/delattr : object
+setitem/delitem : dict
+setenv/delenv : set environment variable
+```
+7. 
+
+
 # Generator
 
 # Metaclass
+# Regex
+## Special characters
+- `\d`, `\D`
+- `\w`, `\W`
+- `\s`, `\S`
+- `(?P<name>)`
+## Simple usage
+```python
+pattern = re.compile("patterm");
+match = pattern.match(str);
+match.groups()/group();
+Ex: pattern = re.compile("(\d) (\d) (\d)")
+match = pattern.match("1 2 3")
+match.groups() == ('1', '2', '3')
+```
+
+
+'a' : 97
+'' : 0
+'CodeFight': 121
+'AAbbb': 98
+'codefight' : 121
+'<Try to #hardcode_results, do you?>': 41
+'Hint: This is a valid test! :-P': 90
