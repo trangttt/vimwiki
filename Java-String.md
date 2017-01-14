@@ -1,7 +1,7 @@
 ## String
 
-- StringJoiner
-- Collectors.joining()
+- StringJoiner ; add single item
+- Collectors.joining(); String.join( delimeter, list/charsequence );
 - Constructor: `""`  or `new String()`
 ```java
 String a = "abcd";
@@ -13,6 +13,11 @@ String c = new String("abcd");
 String d = new String("abcd");
 System.out.println(c == d);  // False
 System.out.println(c.equals(d)); // True
+
+String a = "abc";
+String c = "bdc";
+a.compareTo(c);
+
 ```
 - Repeat string n times
 ```java
@@ -26,6 +31,11 @@ Date date = new SimpleDateFormat("MMMM d, yy", LOCALE.English).parse(str);
 - Count number of occurences
 ```java
 int count = line.length() - line.replace(<character to count>).length();
+```
+
+## String format
+```java
+String.format("%[-: left justified, default is right justified][padding character][width].[precision][formatter: f/d/s] [%n - new line]", *args);
 ```
 ## Array
 - Declare
@@ -132,6 +142,19 @@ class A {
 3. 
 
 ## Collections
+### List
+```java
+list.add
+list.contains
+list.containsAll
+list.size
+```
+- `LinkedList`: `subList(start, stop)`
+### HashMap
+```java
+map.containsKey/containsValue
+map.put
+```
 ## Java regex
 ### Predefined Character Classes
 - `\d` : a digit [0-9]
@@ -175,3 +198,129 @@ catch (IOException ioe){
 
 }
 ```
+
+## Java Logging
+### Native logging 
+```java
+import java.util.logging.Logger;
+
+Logger lg = Logger.getLogger(this.getClass().getName());
+FileHandler fh = new FileHandler("name-%g.txt", true);
+fh.setFormatter(new SimpleFormatter());
+
+```
+- `%u`: unique number to avoid name collision
+- `%g`: generated number to distinguish the rotated log files
+- `%t`: the temp directory of the system
+- `%h`: user home directory of the system
+
+- Formatter
+```java
+class MyFormatter extends Formatter {
+    @Override
+    public String format(LogRecord record){
+        DateFormatter fm = new SimpleDateFormatter("dd/MM/yyyy HH:mm:ss");
+        return fm.format(new Date()) + record.getLevel() + " - " + record.getMessage() + "\n";
+    }
+}
+```
+- properties file
+```java
+try ( FileInputStream fi = new FileInputStream(getClass().getClassLoader().getResource("FileName").getPath())  ){
+    LogManager lm = LogManager.getManager();
+    lm.readConfiguration(fi);
+}
+catch (IOException io){
+    logger.log(Level.SEVERE, "Message", io);
+}
+```
+
+```java properties examples file
+handlers=java.util.logging.FileHandler, java.util.logging.ConsoleHandler
+.level=ALL
+
+java.util.logging.FileHandler.level=ALL
+java.util.logging.FileHandler.formatter=java.util.logging.SimpleFormatter
+java.util.logging.FileHandler.pattern=log-%u-%g.txt
+
+java.util.logging.ConsoleHandler.level=ALL
+```
+### SLF4J logging interface
+```java
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+Logger logger = LoggerFactory.getLogger(class);
+//No logger.fatal
+logger.error()
+logger.warn()
+logger.info()
+logger.debug()
+logger.trace()
+```
+
+- Native `java.util.logging...`: adding `slf4j-api-xx.jar` and `slf4j-jdk-xx.jar`. Adding `-Djava.util.logging.config.file=[path to file from the root directory]`
+- Log4j: adding `slf4j-api-xx.jar` and `slf4j-jdk-xx.jar`
+- NOTES:
+    - Logging exception: `logger.error( "message {}", exception );`. Do NOT use `exception.message()`
+
+### LOG4J
+- appender
+    - FileAppender
+        + Threshold: `debug`, `info`, `warning`
+        + Append: `true` or `false`. Default is `true`.
+        + ImmediateFlush. `true` (default) or `false`.
+        + File: file name + location from project dir
+        + layout :
+            - DateLayout
+            - HTMLLayout
+            - PatternLayout
+                + conversionPattern :
+                    + default: `Default is %r [%t] %p %c %x - %m%n`
+                    + `c`: category. Ex: category `a.b.c`, for `%c{2}` output `b.c`
+                    + `C`: Class: Ex: category `class1.class2.class3`, for `%C{1}`, output `C`
+                    + `d{}`: date. Ex `d{dd MMM yyyy HH:mm:ss,SSS}`
+                    + `m`: message
+                    + `M`: Method Name
+                    + `l`: full Location information: class, (file: line number)
+                    + `L`: Line number
+                    + `p`: priority event
+                    + `r`: elapsed time since beginning
+                    + `n`: new line independent platform `%n`
+                    + `x`: nested diagnostic context `NDC.push(<String: context>)` when entering context and `NDC.pop()` when exit.
+                    + `X`: Mapped Diagnostic Context http://veerasundar.com/blog/2009/11/log4j-mdc-mapped-diagnostic-context-example-code/
+                            `MDC.put(key, value)` and `MDC.remove(key)`
+            - SimpleLayout
+            - XMLLayout
+    - RollingFileAppender
+        + MaxFileSize
+        + MaxBackupIndex
+    - DailyRollingFileAppender
+        + DatePattern: '.' yyyy-MM: rolling every month. https://www.tutorialspoint.com/log4j/log4j_logging_files.htm
+- 
+
+## JAVA 7
+- `static` Static initializer
+- instance field initializer
+- Member class
+- Local Inner Class
+- Anonymous Inner class
+- Enumeration class
+```java
+public enum EnumName {
+    val1("name1"), val2("name2"), val3("name3");
+    
+    private String name;
+    private EnumName(String name){
+        this.name = name;
+    }
+    
+    @Override
+    String toString(){
+        return this.name;
+    }
+}
+```
+- Set: `HashSet`, `TreeSet`. `TreeSet` implements ordering. Required Object put into Set implementing `Comparable` interface.
+- LinkedList: `addFirst`, `addLast`
+- `Queue` operation: `peek`, `poll`. vs `remove`, `element`. `peek`, `poll` return `null` if queue is empty. `remove`, `element` throws exception `NoSuchElemenException`

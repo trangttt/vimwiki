@@ -231,6 +231,118 @@ int len = Files.lines(file).max(Comparator.comparingInt(String::length));
 ```
 -
 # NESTED CLASS
+
+```java
+class A {
+    class InnerClass {
+
+    }
+    static StaticClass {
+
+    }
+}
+
+A.InnerClass item = new A().new InnerClass();
+A.StaticClass item = new A.StaticClass();
+```
 ## Static nested class
 ## Inner Class
 ## Shadowing
+When inner class has the same name with some outer class.
+```java
+class A {
+    public void m(){
+
+    }
+}
+
+class OuterClass {
+    class A {
+        public void m(){
+
+        }
+
+    }
+}
+```
+# JAVA 8
+## default method for interface
+```java
+public interface A {
+    public void method1();
+    
+    default public void method2(){
+        System.out.println("aaaa");
+    }
+}
+```
+- Default method vs static method
+  + Default method : 
+      + Usage: `new Class().defaultMethod()`
+      + Know about `this` variable.
+  + Static method :
+      + Usage: `Class.staticMethod()`
+      + Cannot know about `this` variable.
+## Lambda expression
+## Functional interfaces: must contain exactly one abstract method declaration
+```java
+@FunctionalInterface
+interface Converter<F, T>{
+    T convert(F from);
+}
+```
+## Method and Constructore references
+```java
+//class
+Class::method
+//instance
+object::method
+//constructor
+class::new
+```
+## Lambda scopes
+- Local variables: variabls must declare `final` or behave as `final`
+- Local variables can be read from but not written to
+```java
+final int localVar;
+Function<F, T> f = (from) -> {
+    // can read from localVar
+    // cannot write to localVar 
+} 
+```
+- Accessing fields and static variables. Can read from and write to both static variables and fields.
+```java
+class A {
+    static int sVar;
+    int field;
+    
+    void method(){
+        Function<F, T> f = (from) -> {
+            //can read from and write too sVar and field;
+        }
+    }
+}
+```
+- Default method: since there is no way to create an object from interface, cannot access default method. NOTE: static method is otherwise accessible.
+## Common Functional Interface
+- `Predicate`: `Predicate<T> p -> Boolean`
+- `Function` : `Function<F, T> f`
+- `Supplier` :  `Supplier<T>` no argument, return object of type T
+- `Consumer`
+- `Optional`
+
+## JAVA LOGGING
+### SLF4J 
+```java
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+private final static Logger logger = LoggerFactory.getLogger( <class> );
+logger.info()
+logger.debug()
+```
+- Native `java.util.logging...`: adding `slf4j-api-xx.jar` and `slf4j-jdk-xx.jar`. Adding `-Djava.util.logging.config.file=[path to file from the root directory]`
+- Log4j: adding `slf4j-api-xx.jar` and `slf4j-jdk-xx.jar`
+- NOTES:
+    - Logging exception: `logger.error( "message {}", exception );`. Do NOT use `exception.message()`
+
