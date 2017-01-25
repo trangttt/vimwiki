@@ -4,7 +4,7 @@
 virtualenv : python package to create an isolated Python environments. To isolate dependencies and python version. 
 - `virtualenv -p <path to python executable> <env name>`: create a new virtual env with python executable path.
 - `source <env name>/bin/activate`: activate virtual env.
-- `deactivate`: deactivate a virtual env.
+- `source deactivate`: deactivate a virtual env.
 
 
 ## pyenv 
@@ -149,7 +149,23 @@ def func():
 "a" * 0 = None
 "a" * 1 = "a" 
 ```
-4. 
+4. Os name
+```python
+import os 
+os.name # posix
+
+import platform 
+platform.system() # Darwin
+platform.release() # release version
+platform.platform() # Darwin_15....
+platform.machine() # x86_64
+platform.architecture() # 64bit
+platform.mac_version() # 10.11..
+
+import sys; 
+sys.platform # darwin
+```
+5. 
 
 
 # Profiling
@@ -198,6 +214,8 @@ Running:
     pytest -q <file>
     pytest --collect-only <file> #only prints out testcase
     pytest -k <testcase> <file> #select testcase
+    pytest --fixtures #names of defined fixtures
+    pytest --durations=3 # profiling three slowest tests
 ```
 
 Running with verbose
@@ -254,18 +272,78 @@ usefixtures = fixture1, fixture2,...
 ```
 - `autouse`: use with care
  
-6. "monkeypatch" fixture, for mocking modules
+6. Ignore test
+```python
+pytest --collect-only
+pytest -k stringexpr # MyClass and not method , test MyClass.other_method not MyClass.method
+pytest test_mod.py::test_func
+pytest test_mode.py::TestClass::test_method
+
+import pytest.mark.skip
+skip(reason="")
+def test():
+    pass
+
+pytest.mark.skipif(condition, reason="")
+
+```
+7. Pytest exception test
+```java
+with raise(Exception, message="Failuer Message"):
+    test
+```
+8. Pytest parameterize
+```python
+@pytest.mark.parameterize("var1, var2",[
+    (var1, var2),
+    (var1, var2),
+    (var1, var2),
+    pytest.mark.xfail("condition")((var1, var2))
+])
+def test_func(var1, var2):
+    assert .....
+```
+9. monkeypatching 
 ```python
 def test_f(monkeypatch):
     monkeypatch.setattr(module, "method/variable", value)
 ```
-```java
+```python
 Class MonkeyPatching
 setattr/delattr : object
 setitem/delitem : dict
 setenv/delenv : set environment variable
 ```
-7. 
+
+10. Request object
+```python
+class FixtureRequest:
+- config: pytest config object associate with this request
+- cls
+- function
+- scope
+- instance
+- session
+
+```
+11. Comparing floating point
+```python
+from pytest import approx
+```
+12. 
+```python
+slow = pytest.mark.skipif(
+    not pytest.config.getoption("--run-slow"),
+    reason="need --runslow optiont to run"
+)
+
+@slow
+def test_a():
+    pass
+```
+
+13. Pytest skip incremental test 
+14. Pytest - Postprocess test results/failures 
 
 
 # Generator

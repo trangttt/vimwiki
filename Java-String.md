@@ -324,3 +324,16 @@ public enum EnumName {
 - Set: `HashSet`, `TreeSet`. `TreeSet` implements ordering. Required Object put into Set implementing `Comparable` interface.
 - LinkedList: `addFirst`, `addLast`
 - `Queue` operation: `peek`, `poll`. vs `remove`, `element`. `peek`, `poll` return `null` if queue is empty. `remove`, `element` throws exception `NoSuchElemenException`
+- Java New IO package
+    - `java.nio.file.Path` and `java.nio.file.Paths`
+    - `Path path  = Paths.get(<file>);`
+    - `Files.copy, Files.delete, Files.move(source, target, StandardCopyOption.XXX)`
+    - `Path.resolve`
+- `WatchService`: watching event happens
+- `FileInputStream`, `FileOutputStream`
+- `FileReader`, `FileWriter`
+- `BufferedReader(FileReader())`, `BufferedWriter(FileWriter())`
+- `byte[] Files.readAllBytes(Path path)`
+- `List<String> Files.readAllLines(Path path, Charset cs)`
+- `Stream<String> Files.lines(Path path, Charset cs)`
+- `Stream<Path> Files.list(Path dir)`
