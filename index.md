@@ -10,6 +10,3 @@
     * [Vim](Vim)
     * [Org mode](Org-mode)
     * [Social skills](Social skills)]
-
-
-

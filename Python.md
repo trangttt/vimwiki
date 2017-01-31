@@ -373,3 +373,5 @@ match.groups() == ('1', '2', '3')
 'codefight' : 121
 '<Try to #hardcode_results, do you?>': 41
 'Hint: This is a valid test! :-P': 90
+# Docstring, Sphinx
+`docstring`: :

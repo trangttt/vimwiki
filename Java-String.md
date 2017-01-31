@@ -337,3 +337,8 @@ public enum EnumName {
 - `List<String> Files.readAllLines(Path path, Charset cs)`
 - `Stream<String> Files.lines(Path path, Charset cs)`
 - `Stream<Path> Files.list(Path dir)`
+- 
+## JAVA BASIC
+- Scanner
+- `static` block
+- 

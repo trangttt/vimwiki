@@ -1,4 +1,4 @@
-# Keys to remember 
+[#](#) Keys to remember 
 - `C-c C-s` or `SPC m s`                 : insert calendar
 - `t`                                    : trigger todo
 - `C-- 1 C-c C-t`                        : TODO -> DONE for repeated task
