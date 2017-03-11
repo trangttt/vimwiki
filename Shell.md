@@ -33,7 +33,7 @@ Comparisions in bash
    - `<FILE1> -ef <FILE2>` refer to the same device and inode number
 
 
-## Parameters expansion         
+## Parameters expansion
 
 - Simple usage
 
@@ -45,20 +45,20 @@ Comparisions in bash
    - `${!PARAM}` : value reference by the variable referenced by PARAM
 
 - Case modification
-   - `${PARAM^}`
-   - `${PARAM,}`
-   - `${PARAM^^}`
-   - `${PARAM,,}`
-   - `${PARAM~}`
-   - `${PARAM~~}`
+   - `${PARAM^}`: uppercase first character
+   - `${PARAM,}`: lowercase first character
+   - `${PARAM^^}`: uppercase all character
+   - `${PARAM,,}`: lowercase all character
+   - `${PARAM~}`: reverse case first character
+   - `${PARAM~~}`: revercase all character
 
 - Variable name expansion
    - `${!PREFIX@}`
    - `${!PREFIX*}`
 
 - Substring removal (also for filename manipulation!)
-   - `${PARAM#PATTERN}`
-   - `${PARAM##PATTERN}`
+   - `${PARAM#PATTERN}`: remove prefix matching pattern
+   - `${PARAM##PATTERN}`: removing all prefix matching pattern.
    - `${PARAM%PATTERN}`
    - `${PARAM%%PATTERN}`
 
@@ -98,7 +98,7 @@ Comparisions in bash
 $[ ]
 $(( ))
 
-##  Color 
+## Color 
 
 * Escape sequence \e[  \x1B
  
@@ -127,6 +127,7 @@ Ensure only the owner of the files are allowed to delete such files.
 -0
 -p : prompt
 -n <number> : number of args
+-L <number>: fetching number of line into one
 -I  {} : argument replacement
 -J
 

@@ -12,10 +12,12 @@
 # Org-mode as GTD
 - `<leader>I`, `<leader>O`, `<leader>q` : Clock In, Clock Out, Cancel
 - `org-dblock-update`                   : update clock
+- `C-c C-c`         : update dynamic block
 - Resolve idle time : k/K, s/S
 - `C-c C-x C-d`     : Clock display
 - `C-c C-x C-r`     : Clock report
-- `<leader> :`      : set tags
+- `<leader> :`      : set tags using predefined tag list in spacemacs
+- `C-c C-q`         : set tags using tags defined in currently edited file
 - `<leader> s`      : set calendar/scheduling http://orgmode.org/manual/Timestamps.html#Timestamps
 - `<leadeR> d`      : set deadline
 - Timestamp : 

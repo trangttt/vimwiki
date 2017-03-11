@@ -105,16 +105,21 @@ List list = new ArrayList<String>();
 list.add("aString");
 list.add(1); //compile and produce runtime error
 
+-Using unbounded wild card: cannot perform operation requires type information ( storing, fetching ), instead only certain operations allowed such as , size, length
 //Unbounded wild card
 List<?> list = new ArrayList<String>();
 list.add("aString"); //compile error since type is unknown
 list.size(); //this works as type is not need to known. Methods don't require type works as usual.
 
+- Object type: can storing arbitrary variables from different type.
 //Object type
+```java
 List<Object> list = new ArrayList<String>();
 list.add("aString"); // compile and run ok
 list.add(1); // compile and run ok
+```
 
+```java
 void appendNew(List<Object> list){
 
 }
@@ -139,7 +144,14 @@ class A {
     }
 }
 ```
-3. 
+3.  Type erasure
+- Cannot use `instanceof`  for checking variable type against parameterized type T. due to `type erasure` Meaning, T is only used for compiler for checking type consistency, otherwise they are removed during runtime.
+```java
+List<Foo> list = new ArrayList<Foo>();
+//At runtime becomes
+List list = new ArrayList();
+``` 
+4. 
 
 ## Collections
 ### List
@@ -154,7 +166,12 @@ list.size
 ```java
 map.containsKey/containsValue
 map.put
+map.compute(key, BiFunction<key, new value>)
 ```
+### Collections
+- `Collections.nCopies( int number, Object item )`: return a collections of n copies of items.
+- `Collections.disjoint(Collection1, Collection2)`
+- Collections.enumeration
 ## Java regex
 ### Predefined Character Classes
 - `\d` : a digit [0-9]

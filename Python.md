@@ -198,6 +198,107 @@ Adding `@profile` to the to-be-profiled functions.
 ## doctest
 ## unittest
 ## Mock module
+### What to mock
+- instance
+```python
+    def f(s):
+        return s.message
+        
+   
+    m = Mock(message="123")
+    assert f(m) == "123" 
+```
+- class method
+- object method
+### unittest.mock Python3 and mock Python2
+```python
+try :
+	import mock # for python 2
+except ImportError:
+	from unittest import mock
+
+##########
+# Function mock
+#########
+## function.py
+
+def square(s):
+	return s * s
+
+def cube(s):
+	return s * s * s
+
+def main(s):
+	return square(s) + cube(s)
+
+###############
+
+from function import square, main
+
+class TestABC(unittest.TestCase):
+	# Mock function inside another call.
+	@mock.patch('function.square')
+	@mock.patch('function.cube')
+	def test_main(self, mocked_square, mocked_cube):
+		mocked_square.return_value = 1
+		mocked_cube.return_value = 1
+		main(5)
+		mocked_square.assert_called_once_with(5)
+		mocked_cube.assert_called_once_with(5)
+
+	# Mock functions in this file
+	@mock.patch('__main__.square', return_value=5)
+	def test_square(self, mocked_square):
+		assertEquals(square(5), 5)
+
+#############
+# Class mock
+#############
+## square.py
+Class Square(object):
+	def __init__(self, s):
+		self.s = s
+
+	def calculate_area(self):
+		return self.s * self.s 
+########
+
+from square import Square
+
+class TestSquare(unittest.TestCase):
+	@mock.patch('__main__.Square')
+	def	test_square(self, mocked_square):
+		mocked_instance = mocked_square.return_value
+		mocked_instance.calculate_area.return_value = 5
+		sq = Square(100)
+		self.assertEquals(sq.calculate_area(), 5)
+		
+	@mock.patch.object(Square, 'calculate_area'):
+	def test_calculate_area(self, mocked_method):
+		mocked_method.return_value = 5
+		self.assertEquals(Square(100).calculate_area(), 5)
+		
+	def test_magic_mock(self):
+		sq = Square(100)
+		
+	
+```
+#### Mock
+#### patcher
+#### MagicMock
+### pytest monkeypatch, mock
+```python
+def get_ssh():
+    return os.path.join(os.path.expanduser("~admin"), '.ssh')
+    
+def test_function(monkeypatch):
+    def mockreturn(path):
+        return '/abc'
+    monkeypatch.setattr(os.path, "expanduser", mockereturn)
+    
+    x = getssh()
+    return x == '/abc/.ssh'
+```
 ## pytest
 1. Simple test:
 ```python
@@ -288,7 +389,7 @@ pytest.mark.skipif(condition, reason="")
 
 ```
 7. Pytest exception test
-```java
+```python
 with raise(Exception, message="Failuer Message"):
     test
 ```
@@ -374,4 +475,148 @@ match.groups() == ('1', '2', '3')
 '<Try to #hardcode_results, do you?>': 41
 'Hint: This is a valid test! :-P': 90
 # Docstring, Sphinx
-`docstring`: :
+## `docstring`: :
+## Sphinx
+- `sphinx-quickstart`  to generate `conf.py`
+- syntax
+- running
+## Python command line
+### Making a package executable: `__main__.py`
+### Argparse
+```python
+import argparse
+arparser = argparse.ArgumentParser(
+    prog="python -m appname",
+    description="Program description"
+)
+```
+# Decorators:
+- normal decorator
+```python
+from functools import wraps
+
+def decorator(func):
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        do_something()
+        func(*args, **kwargs)
+    return wrapper
+```
+- decorator with arguments
+```python
+def decorator_with_args(*args):
+    doing something()
+    def decorator(func):
+        def wrapper(*args, **kwargs):
+            doing something()
+            func(*args, **kwargs)
+            doing something()
+        return wrapper
+    return decorator
+```
+
+- decorator ultilizes annotation
+```python
+def store_args(func):
+    @wraps(func):
+    def wrapper(self, **kwargs):
+        for name, value in kwargs.items():
+            type = func.__annotations__.get(name)
+            if not isinstance(value, type):
+                value = type(value)
+            if isinstance(name, str):
+                setattr(self, name, value)
+        return func(**kwargs)
+    return wrapper
+    
+    
+class Test:
+    @store_args
+    def __init__(self, attr1 : int, attr2: str):
+        pass
+```
+- decorator for class
+```python
+```
+# Context manager
+- functin version
+```python
+import contextlib
+@contextlib.contextmanager
+def before_and_after():
+    print("Before")
+    try:
+        yield (lambda: print("during"))
+    finally:
+        print("After")
+        
+with before_and_after() as during:
+    print("MIDDLE")
+    during()
+    
+    
+Before
+MIDDLE
+during
+After
+```
+
+- class version ( synchronous vs asynchronous )
+```python
+class SomethingContextManager:
+    def __init__(self, *args):
+        return self
+        
+    def __enter/aenter__(self):
+        return something
+        
+    def __exit/aexit__(self, exc_type, exc_val, tb):
+        doing_something()
+
+something = SomethingContextManager(args)
+with something as st:
+    doing_something()
+```
+# Descriptors
+- Using `@property`
+```python
+class MyClass:
+    @property
+    def member(self):
+        print("This is a getter method.")
+        return self._member
+        
+    @member.setter
+    def member(self, value):
+        print("This is a setter method.")
+        self._member = value
+        
+    
+    @member.deletter
+    def member(self):
+        print("This is a deletter method.")
+        del self._member
+```
+- Descriptor class
+```python
+Class Member(object):
+    def __init__(self, value):
+        self.value = value
+        
+    def __get__(self, instance, owner):
+        return self.value
+        
+    def __set__(self, instance, value):
+        self.value = value
+        
+    def __delete__(self, instance):
+        self.value = 0
+        
+class MyClass(object):
+    member1 = Member(val1)
+    
+mc = MyClass()
+
+mc.member1 # Using Member.__get__
+mc.member1 == 2 # Using Member.__set__
+```
